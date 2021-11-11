@@ -8,10 +8,10 @@ defmodule ListFilter do
 
     defp count_number_odd(list) do
       list
-        |>Enum.map(fn x -> Integer.parse(x) end) 
-        |>Enum.filter(fn x -> is_tuple(x) end)
-        |>Enum.map(fn x -> elem(x,0) end)
-        |>Enum.filter(fn x -> Integer.is_odd(x) end)
+        |>Enum.map(&Integer.parse(&1)) 
+        |>Enum.filter(&is_tuple(&1))
+        |>Enum.map(&elem(&1,0))
+        |>Enum.filter(&Integer.is_odd(&1))
         |>Enum.count()
     end
 end
