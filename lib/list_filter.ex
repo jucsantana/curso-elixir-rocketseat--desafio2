@@ -1,5 +1,7 @@
 defmodule ListFilter do
 
+  require Integer
+
     def filter(list), do: count_number_odd(list)
 
     defp count_number_odd([]), do: 0
@@ -9,7 +11,7 @@ defmodule ListFilter do
         |>Enum.map(fn x -> Integer.parse(x) end) 
         |>Enum.filter(fn x -> is_tuple(x) end)
         |>Enum.map(fn x -> elem(x,0) end)
-        |>Enum.filter(fn x -> rem(x,2)!=0 end)
-        |>length()
+        |>Enum.filter(fn x -> Integer.is_odd(x) end)
+        |>Enum.count()
     end
 end
